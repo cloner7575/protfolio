@@ -45,12 +45,5 @@ urlpatterns += i18n_patterns(
     prefix_default_language=False,
 )
 
-# Serve static files in development only (WhiteNoise handles it in production)
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    
-    # Test error pages in DEBUG mode (optional - remove in production)
-    # urlpatterns += [
-    #     path('404/', TemplateView.as_view(template_name='404.html')),
-    #     path('500/', TemplateView.as_view(template_name='500.html')),
-    # ]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

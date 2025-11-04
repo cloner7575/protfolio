@@ -136,19 +136,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-
-# WhiteNoise configuration for serving static files in production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATIC_URL = config('STATIC_URL', default='/static/')
+STATIC_ROOT = config('STATIC_ROOT', default=os.path.join(BASE_DIR, "public", "static"))
 
 MEDIA_URL = config('MEDIA_URL', default='/media/')
 MEDIA_ROOT = config('MEDIA_ROOT', default=os.path.join(BASE_DIR, "public", "media"))
-
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

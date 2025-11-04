@@ -29,15 +29,7 @@ urlpatterns = [
 
 # Serve media files BEFORE i18n_patterns to avoid language prefix issues
 # This ensures /media/ URLs work regardless of language
-if settings.DEBUG:
-    urlpatterns += [
-        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-    ]
-else:
-    # For production, also serve media files (but ideally use nginx/apache)
-    urlpatterns += [
-        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-    ]
+
 
 urlpatterns += i18n_patterns(
     path('', include('portfolio.urls')),

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'About' %}{% endblock %}
+{% block content %}
+<div class="row align-items-center g-4">
+  <div class="col-md-4 text-center">
+    <div class="profile-pic shimmer"></div>
+  </div>
+  <div class="col-md-8">
+    <h2 class="h4 mb-3">{% trans 'About Me' %}</h2>
+    <p>{% trans 'Write your bilingual bio here.' %}</p>
+    <div class="d-flex gap-3 mt-3">
+      <a class="text-decoration-none" href="#"><i class="bi bi-github"></i></a>
+      <a class="text-decoration-none" href="#"><i class="bi bi-linkedin"></i></a>
+      <a class="text-decoration-none" href="#"><i class="bi bi-twitter-x"></i></a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Contact' %}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="section-title" data-aos="fade-up">{% trans 'Get In Touch' %}</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    {% trans 'Have a project in mind? Feel free to reach out!' %}
+                </p>
+                
+                <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">{% trans 'Name' %} <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">{% trans 'Email' %} <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="subject" class="form-label">{% trans 'Subject' %} <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="subject" name="subject" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">{% trans 'Message' %} <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">
+                                    <i class="bi bi-send me-2"></i>{% trans 'Send Message' %}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="row g-4 mt-5">
+                    <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="bi bi-envelope-fill text-purple mb-3" style="font-size: 2.5rem;"></i>
+                                <h5>{% trans 'Email' %}</h5>
+                                <p class="text-muted mb-0">contact@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="bi bi-phone-fill text-purple mb-3" style="font-size: 2.5rem;"></i>
+                                <h5>{% trans 'Phone' %}</h5>
+                                <p class="text-muted mb-0">+1 234 567 890</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="500">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="bi bi-geo-alt-fill text-purple mb-3" style="font-size: 2.5rem;"></i>
+                                <h5>{% trans 'Location' %}</h5>
+                                <p class="text-muted mb-0">{% trans 'City, Country' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.text-purple {
+    color: var(--purple-500);
+}
+</style>
+{% endblock %}

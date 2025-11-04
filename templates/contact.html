@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Contact' %}{% endblock %}
+{% block content %}
+<h2 class="h4 mb-4">{% trans 'Contact' %}</h2>
+<form class="card p-3" method="post">
+  {% csrf_token %}
+  <div class="row g-3">
+    <div class="col-md-6"><input class="form-control" name="name" placeholder="{% trans 'Name' %}"></div>
+    <div class="col-md-6"><input type="email" class="form-control" name="email" placeholder="{% trans 'Email' %}"></div>
+    <div class="col-12"><input class="form-control" name="subject" placeholder="{% trans 'Subject' %}"></div>
+    <div class="col-12"><textarea class="form-control" name="message" rows="5" placeholder="{% trans 'Message' %}"></textarea></div>
+    <div class="col-12"><button class="btn btn-primary">{% trans 'Send' %}</button></div>
+  </div>
+</form>
+{% endblock %}
+
+

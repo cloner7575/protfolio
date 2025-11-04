@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Experience' %}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">{% trans 'Work Experience' %}</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{% trans 'My professional journey' %}</p>
+        
+        <div class="timeline">
+            {% for experience in experiences %}
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <div class="timeline-point"></div>
+                <div class="timeline-content">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h4 class="h5 mb-1">{{ experience.get_title }}</h4>
+                            <h5 class="h6 text-purple mb-2">{{ experience.company }}</h5>
+                        </div>
+                        {% if experience.current %}
+                        <span class="badge bg-success">{% trans 'Current' %}</span>
+                        {% endif %}
+                    </div>
+                    <p class="text-muted small mb-3">
+                        <i class="bi bi-calendar me-1"></i>
+                        {{ experience.start_date|date:"M Y" }} - 
+                        {% if experience.end_date %}
+                            {{ experience.end_date|date:"M Y" }}
+                        {% else %}
+                            {% trans 'Present' %}
+                        {% endif %}
+                    </p>
+                    <p class="mb-0">{{ experience.get_description }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="text-center">
+                <p class="text-muted">{% trans 'No experience records available yet.' %}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.text-purple {
+    color: var(--purple-500);
+}
+</style>
+{% endblock %}

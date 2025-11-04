@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Projects' %}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">{% trans 'My Projects' %}</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{% trans 'A collection of my recent work and side projects' %}</p>
+        
+        <!-- Filter -->
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <input type="text" class="form-control project-filter" 
+                       placeholder="{% trans 'Filter by technology...' %}" 
+                       id="projectFilter">
+            </div>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4 project-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <div class="card project-card h-100">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" class="project-card-img" alt="{{ project.get_title }}">
+                    {% else %}
+                    <div class="project-card-img bg-gradient-primary d-flex align-items-center justify-content-center">
+                        <i class="bi bi-image" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        {% if project.featured %}
+                        <span class="badge bg-purple mb-2">
+                            <i class="bi bi-star-fill me-1"></i>{% trans 'Featured' %}
+                        </span>
+                        {% endif %}
+                        <h5 class="card-title">{{ project.get_title }}</h5>
+                        <p class="card-text text-muted">{{ project.get_description|truncatewords:20 }}</p>
+                        
+                        <div class="mb-3">
+                            {% for tech in project.get_technologies_list|slice:":4" %}
+                            <span class="badge bg-secondary me-1 mb-1">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'project_detail' project.slug %}" class="btn btn-sm btn-primary">
+                                {% trans 'View Details' %}
+                            </a>
+                            <div class="d-flex gap-2">
+                                {% if project.github_link %}
+                                <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-outline-secondary" 
+                                   aria-label="{% trans 'GitHub' %}">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                                {% endif %}
+                                {% if project.demo_link %}
+                                <a href="{{ project.demo_link }}" target="_blank" class="btn btn-sm btn-outline-secondary" 
+                                   aria-label="{% trans 'Demo' %}">
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">{% trans 'No projects available yet.' %}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.bg-purple {
+    background: #64FFDA !important;
+    color: #0A192F !important;
+}
+
+.badge.bg-purple,
+span.badge.bg-purple {
+    background: #64FFDA !important;
+    color: #0A192F !important;
+}
+
+.badge.bg-purple *,
+span.badge.bg-purple *,
+.badge.bg-purple i {
+    color: #0A192F !important;
+}
+
+.bg-gradient-primary {
+    background: var(--primary);
+}
+</style>
+{% endblock %}

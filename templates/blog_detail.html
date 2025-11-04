@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Blog Post' %}{% endblock %}
+{% block content %}
+<article class="card p-4">
+  <h1 class="h3">{% trans 'Blog Title' %}</h1>
+  <div class="text-muted small mb-3">{% trans 'Published on' %} 2025-01-01</div>
+  <div class="ratio ratio-16x9 bg-light rounded shimmer mb-3"></div>
+  <p>{% trans 'Post content...' %}</p>
+</article>
+{% endblock %}
+
+

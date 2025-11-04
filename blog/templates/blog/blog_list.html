@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Blog' %}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">{% trans 'Blog' %}</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{% trans 'Latest articles and tutorials' %}</p>
+        
+        <!-- Search & Categories -->
+        <div class="row mb-5">
+            <div class="col-md-6 mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="200">
+                <form method="get" class="d-flex">
+                    <input type="text" name="search" class="form-control" 
+                           placeholder="{% trans 'Search posts...' %}" 
+                           value="{{ search_query }}">
+                    <button type="submit" class="btn btn-primary ms-2">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{% url 'blog_list' %}" class="badge bg-purple text-decoration-none">
+                        {% trans 'All' %}
+                    </a>
+                    {% for category in categories %}
+                    <a href="{% url 'blog_category' category.slug %}" 
+                       class="badge bg-secondary text-decoration-none">
+                        {{ category.get_name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blog Posts -->
+        <div class="row g-4">
+            {% for post in page_obj %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <div class="card h-100">
+                    {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" class="card-img-top" 
+                         alt="{{ post.get_title }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-gradient-primary d-flex align-items-center justify-content-center" 
+                         style="height: 200px;">
+                        <i class="bi bi-file-text" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        {% if post.category %}
+                        <span class="badge bg-purple mb-2">{{ post.category.get_name }}</span>
+                        {% endif %}
+                        <h5 class="card-title">{{ post.get_title }}</h5>
+                        <p class="card-text text-muted">{{ post.get_content|truncatewords:20 }}</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>{{ post.created_at|date:"M d, Y" }}
+                            </small>
+                            <small class="text-muted">
+                                <i class="bi bi-eye me-1"></i>{{ post.views }} {% trans 'views' %}
+                            </small>
+                        </div>
+                        {% if post.author %}
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-person-circle me-2 text-purple"></i>
+                            <small class="text-muted">{{ post.author.get_full_name|default:post.author.username }}</small>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="{% url 'blog_detail' post.slug %}" class="btn btn-sm btn-outline-primary w-100">
+                            {% trans 'Read More' %} <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">{% trans 'No blog posts available yet.' %}</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if page_obj.has_other_pages %}
+        <nav aria-label="Blog pagination" class="mt-5">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">{% trans 'Previous' %}</a>
+                </li>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans 'Next' %}</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.bg-purple {
+    background: var(--purple-600) !important;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--purple-600), var(--purple-400));
+}
+
+.text-purple {
+    color: var(--purple-500);
+}
+
+.pagination .page-link {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(124, 58, 237, 0.2);
+    color: var(--text-primary);
+}
+
+.pagination .page-item.active .page-link {
+    background: var(--purple-600);
+    border-color: var(--purple-600);
+}
+
+.pagination .page-link:hover {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: var(--purple-500);
+    color: var(--text-primary);
+}
+</style>
+{% endblock %}

@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% load i18n portfolio_tags %}
+
+{% block title %}{% trans 'Skills & Technologies' %}{% endblock %}
+
+{% block content %}
+<!-- Hero Section for Skills -->
+<section class="hero-section" style="padding: 4rem 0 2rem;">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="section-title mb-3">{% trans 'Skills & Technologies' %}</h1>
+            <p class="section-subtitle fs-5">
+                {% trans 'A comprehensive overview of my technical expertise and proficiency in various technologies' %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills by Category -->
+<section class="section">
+    <div class="container">
+        {% if skills_by_category %}
+            {% for category, skills_list in skills_by_category.items %}
+            <div class="skills-category-section mb-5" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="category-icon-wrapper me-3">
+                        <i class="bi bi-{{ category|category_icon }} category-icon"></i>
+                    </div>
+                    <div>
+                        <h2 class="category-title mb-1">{{ category|localize_category }}</h2>
+                        <p class="text-muted mb-0 small">
+                            {% if category == 'frontend' %}
+                                {% trans 'Frontend technologies and frameworks' %}
+                            {% elif category == 'backend' %}
+                                {% trans 'Backend frameworks and server-side technologies' %}
+                            {% elif category == 'database' %}
+                                {% trans 'Database management systems' %}
+                            {% elif category == 'tools' %}
+                                {% trans 'Development tools and utilities' %}
+                            {% else %}
+                                {% trans 'Other technologies and skills' %}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    {% for skill in skills_list %}
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="card skill-card h-100" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'50' }}">
+                            <div class="card-body text-center">
+                                {% if skill.icon %}
+                                <div class="skill-icon mb-3">
+                                    <i class="{{ skill.icon }}"></i>
+                                </div>
+                                {% else %}
+                                <div class="skill-icon mb-3">
+                                    <i class="bi bi-code-slash"></i>
+                                </div>
+                                {% endif %}
+                                
+                                <h5 class="skill-name mb-3">{{ skill.name }}</h5>
+                                
+                                <div class="skill-progress-wrapper">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="skill-level-text">{{ skill.level }}%</span>
+                                        <span class="skill-proficiency">
+                                            {% if skill.level >= 90 %}
+                                                {% trans 'Expert' %}
+                                            {% elif skill.level >= 70 %}
+                                                {% trans 'Advanced' %}
+                                            {% elif skill.level >= 50 %}
+                                                {% trans 'Intermediate' %}
+                                            {% else %}
+                                                {% trans 'Beginner' %}
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                    <div class="progress skill-progress">
+                                        <div class="progress-bar skill-progress-bar" 
+                                             role="progressbar" 
+                                             style="width: {{ skill.level }}%" 
+                                             aria-valuenow="{{ skill.level }}" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100"
+                                             data-level="{{ skill.level }}">
+                                            <span class="visually-hidden">{{ skill.level }}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center py-5" data-aos="fade-up">
+                <div class="mb-4">
+                    <i class="bi bi-inbox" style="font-size: 4rem; color: var(--text-muted);"></i>
+                </div>
+                <h3 class="mb-3">{% trans 'No Skills Available' %}</h3>
+                <p class="text-muted">{% trans 'Skills will be displayed here once they are added.' %}</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.skills-category-section {
+    padding: 2rem 0;
+}
+
+.category-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--purple-600), var(--purple-400));
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-purple);
+}
+
+.category-icon {
+    font-size: 2rem;
+    color: white;
+}
+
+.category-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.skill-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 1rem;
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--purple-500);
+    box-shadow: var(--shadow-purple);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: var(--transition);
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.1);
+}
+
+.skill-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.skill-progress-wrapper {
+    margin-top: 1rem;
+}
+
+.skill-level-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--purple-400);
+}
+
+.skill-proficiency {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.skill-progress {
+    height: 8px;
+    background: rgba(124, 58, 237, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-progress-bar {
+    background: linear-gradient(90deg, var(--purple-600), var(--purple-400));
+    border-radius: 10px;
+    transition: width 1s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,331 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Django Portfolio\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-01 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+
+
+msgid "5+"
+msgstr "5+"
+
+msgid "50+"
+msgstr "50+"
+
+msgid "A collection of my recent work and side projects"
+msgstr "مجموعه‌ای از کارها و پروژه‌های جانبی اخیر من"
+
+msgid "About"
+msgstr "درباره من"
+
+msgid "About Me"
+msgstr "درباره من"
+
+msgid "All"
+msgstr "همه"
+
+msgid "All rights reserved"
+msgstr "تمام حقوق محفوظ است"
+
+msgid "Back to Blog"
+msgstr "بازگشت به بلاگ"
+
+msgid "Backend"
+msgstr "بک‌اند"
+
+msgid "Blog"
+msgstr "بلاگ"
+
+msgid "Category"
+msgstr "دسته‌بندی"
+
+msgid "Check out some of my recent work"
+msgstr "برخی از کارهای اخیر من را مشاهده کنید"
+
+msgid "City, Country"
+msgstr "شهر، کشور"
+
+msgid "Close"
+msgstr "بستن"
+
+msgid "Contact"
+msgstr "تماس"
+
+msgid "Contact Me"
+msgstr "تماس با من"
+
+msgid "Created"
+msgstr "ایجاد شده"
+
+msgid "Created with Django and Bootstrap"
+msgstr "ساخته شده با Django و Bootstrap"
+
+msgid "Current"
+msgstr "فعلی"
+
+msgid "Database"
+msgstr "دیتابیس"
+
+msgid "Demo"
+msgstr "دمو"
+
+msgid "Education"
+msgstr "تحصیلات"
+
+msgid "Email"
+msgstr "ایمیل"
+
+msgid "Experience"
+msgstr "تجربه کاری"
+
+msgid "Featured"
+msgstr "ویژه"
+
+msgid "Featured Project"
+msgstr "پروژه ویژه"
+
+msgid "Filter by technology..."
+msgstr "فیلتر بر اساس تکنولوژی..."
+
+msgid "Frontend"
+msgstr "فرانت‌اند"
+
+msgid "Full-Stack Developer & Creative Problem Solver"
+msgstr "توسعه‌دهنده فول‌استک و حل‌کننده خلاقانه مسائل"
+
+msgid "Get In Touch"
+msgstr "تماس بگیرید"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Have a project in mind? Feel free to reach out!"
+msgstr "پروژه‌ای در ذهن دارید؟ خوشحال می‌شوم با من تماس بگیرید!"
+
+msgid "Hi, I am"
+msgstr "سلام، من"
+
+msgid "Home"
+msgstr "خانه"
+
+msgid "I am a passionate Full-Stack Developer with expertise in building modern web applications. I love solving complex problems and creating beautiful, functional user experiences."
+msgstr "من یک توسعه‌دهنده فول‌استک پرشور با تخصص در ساخت اپلیکیشن‌های وب مدرن هستم. عاشق حل مسائل پیچیده و ایجاد تجربیات کاربری زیبا و کاربردی هستم."
+
+msgid "Latest Blog Posts"
+msgstr "آخرین پست‌های بلاگ"
+
+msgid "Latest Projects"
+msgstr "آخرین پروژه‌ها"
+
+msgid "Latest articles and tutorials"
+msgstr "آخرین مقالات و آموزش‌ها"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Live Demo"
+msgstr "دمو زنده"
+
+msgid "Location"
+msgstr "موقعیت"
+
+msgid "Message"
+msgstr "پیام"
+
+msgid "My Projects"
+msgstr "پروژه‌های من"
+
+msgid "My educational background"
+msgstr "پس‌زمینه تحصیلی من"
+
+msgid "My professional journey"
+msgstr "سفر حرفه‌ای من"
+
+msgid "Name"
+msgstr "نام"
+
+msgid "Next"
+msgstr "بعدی"
+
+msgid "No blog posts available yet."
+msgstr "هنوز پست بلاگی موجود نیست."
+
+msgid "No education records available yet."
+msgstr "هنوز رکورد تحصیلی موجود نیست."
+
+msgid "No experience records available yet."
+msgstr "هنوز رکورد تجربه‌ای موجود نیست."
+
+msgid "No posts found in this category."
+msgstr "پستی در این دسته‌بندی پیدا نشد."
+
+msgid "No projects available yet."
+msgstr "هنوز پروژه‌ای موجود نیست."
+
+msgid "Other"
+msgstr "سایر"
+
+msgid "Personal portfolio and blog"
+msgstr "پورتفولیو و بلاگ شخصی"
+
+msgid "Phone"
+msgstr "تلفن"
+
+msgid "Portfolio"
+msgstr "پورتفولیو"
+
+msgid "Present"
+msgstr "در حال حاضر"
+
+msgid "Previous"
+msgstr "قبلی"
+
+msgid "Project Info"
+msgstr "اطلاعات پروژه"
+
+msgid "Projects"
+msgstr "پروژه‌ها"
+
+msgid "Projects Completed"
+msgstr "پروژه تکمیل شده"
+
+msgid "Published on"
+msgstr "منتشر شده در"
+
+msgid "Read More"
+msgstr "بیشتر بخوانید"
+
+msgid "Read my latest articles and tutorials"
+msgstr "آخرین مقالات و آموزش‌های من را بخوانید"
+
+msgid "Related Projects"
+msgstr "پروژه‌های مرتبط"
+
+msgid "Scroll to top"
+msgstr "اسکرول به بالا"
+
+msgid "Search posts..."
+msgstr "جستجوی پست‌ها..."
+
+msgid "Send Message"
+msgstr "ارسال پیام"
+
+msgid "Skills"
+msgstr "مهارت‌ها"
+
+msgid "Subject"
+msgstr "موضوع"
+
+msgid "Technologies"
+msgstr "تکنولوژی‌ها"
+
+msgid "Technologies and tools I work with"
+msgstr "تکنولوژی‌ها و ابزارهایی که با آنها کار می‌کنم"
+
+msgid "Toggle navigation"
+msgstr "تغییر ناوبری"
+
+msgid "Tools"
+msgstr "ابزارها"
+
+msgid "Twitter"
+msgstr "توییتر"
+
+msgid "View All Posts"
+msgstr "مشاهده همه پست‌ها"
+
+msgid "View All Projects"
+msgstr "مشاهده همه پروژه‌ها"
+
+msgid "View Details"
+msgstr "مشاهده جزئیات"
+
+msgid "View Projects"
+msgstr "مشاهده پروژه‌ها"
+
+msgid "View on GitHub"
+msgstr "مشاهده در GitHub"
+
+msgid "Skills & Technologies"
+msgstr "مهارت‌ها و تکنولوژی‌ها"
+
+msgid "A comprehensive overview of my technical expertise and proficiency in various technologies"
+msgstr "نمای کلی از تخصص فنی و تسلط من در تکنولوژی‌های مختلف"
+
+msgid "Frontend technologies and frameworks"
+msgstr "تکنولوژی‌ها و فریمورک‌های فرانت‌اند"
+
+msgid "Backend frameworks and server-side technologies"
+msgstr "فریمورک‌های بک‌اند و تکنولوژی‌های سمت سرور"
+
+msgid "Database management systems"
+msgstr "سیستم‌های مدیریت پایگاه داده"
+
+msgid "Development tools and utilities"
+msgstr "ابزارها و برنامه‌های کمکی توسعه"
+
+msgid "Other technologies and skills"
+msgstr "سایر تکنولوژی‌ها و مهارت‌ها"
+
+msgid "Expert"
+msgstr "متخصص"
+
+msgid "Advanced"
+msgstr "پیشرفته"
+
+msgid "Intermediate"
+msgstr "متوسط"
+
+msgid "Beginner"
+msgstr "مبتدی"
+
+msgid "No Skills Available"
+msgstr "هیچ مهارتی موجود نیست"
+
+msgid "Skills will be displayed here once they are added."
+msgstr "مهارت‌ها پس از افزودن در اینجا نمایش داده می‌شوند."
+
+msgid "Page Not Found"
+msgstr "صفحه یافت نشد"
+
+msgid "Sorry, the page you're looking for doesn't exist or has been moved."
+msgstr "متأسفانه صفحه‌ای که به دنبال آن هستید وجود ندارد یا منتقل شده است."
+
+msgid "Go Back"
+msgstr "بازگشت"
+
+msgid "Server Error"
+msgstr "خطای سرور"
+
+msgid "We're sorry, but something went wrong on our end. Please try again later."
+msgstr "متأسفیم، مشکلی در سمت سرور رخ داده است. لطفاً بعداً دوباره تلاش کنید."
+
+msgid "Updated"
+msgstr "به‌روزرسانی شده"
+
+msgid "Share"
+msgstr "اشتراک‌گذاری"
+
+msgid "With years of experience in both frontend and backend development, I specialize in creating scalable, maintainable, and performant applications."
+msgstr "با سال‌ها تجربه در توسعه فرانت‌اند و بک‌اند، در ساخت اپلیکیشن‌های مقیاس‌پذیر، قابل نگهداری و با عملکرد بالا تخصص دارم."
+
+msgid "Work Experience"
+msgstr "تجربه کاری"
+
+msgid "Years Experience"
+msgstr "سال تجربه"
+
+msgid "views"
+msgstr "بازدید"

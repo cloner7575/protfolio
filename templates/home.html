@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Home' %}{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center hero-section">
+  <h1 class="display-5 fw-bold mb-3">{% trans 'Hi, I am Your Name' %}</h1>
+  <p class="lead mb-4">{% trans 'Full-Stack Developer' %}</p>
+  <div class="d-flex justify-content-center gap-3">
+    <a href="{% url 'projects' %}" class="btn btn-lg btn-light text-primary shadow-sm">{% trans 'View Projects' %}</a>
+    <a href="{% url 'contact' %}" class="btn btn-lg btn-outline-light">{% trans 'Contact Me' %}</a>
+  </div>
+</section>
+
+<section class="py-5">
+  <h2 class="h4 mb-4">{% trans 'Latest Projects' %}</h2>
+  <div class="row g-4">
+    <div class="col-md-4"><div class="card shimmer" style="height:160px"></div></div>
+    <div class="col-md-4"><div class="card shimmer" style="height:160px"></div></div>
+    <div class="col-md-4"><div class="card shimmer" style="height:160px"></div></div>
+  </div>
+</section>
+
+<section class="py-5">
+  <h2 class="h4 mb-4">{% trans 'Latest Blog Posts' %}</h2>
+  <div class="row g-4">
+    <div class="col-md-6"><div class="card shimmer" style="height:120px"></div></div>
+    <div class="col-md-6"><div class="card shimmer" style="height:120px"></div></div>
+  </div>
+</section>
+{% endblock %}
+
+

@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Home' %}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">{% trans 'Hi, I am' %} <span class="gradient-text">Your Name</span></h1>
+            <p class="hero-subtitle">{% trans 'Full-Stack Developer & Creative Problem Solver' %}</p>
+            <div class="hero-buttons">
+                <a href="{% url 'projects' %}" class="btn btn-primary btn-lg">
+                    <i class="bi bi-folder me-2"></i>{% trans 'View Projects' %}
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+                    <i class="bi bi-envelope me-2"></i>{% trans 'Contact Me' %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Projects -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">{% trans 'Latest Projects' %}</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{% trans 'Check out some of my recent work' %}</p>
+        
+        <div class="row g-4">
+            {% for project in featured_projects|slice:":3" %}
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'200' }}">
+                <div class="card project-card h-100">
+                    <div class="project-card-img-wrapper">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" class="project-card-img" alt="{{ project.get_title }}">
+                        {% else %}
+                        <div class="project-card-img bg-gradient-primary d-flex align-items-center justify-content-center">
+                            <i class="bi bi-image" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        {% endif %}
+                        <div class="project-card-overlay">
+                            <div class="d-flex gap-2 justify-content-center">
+                                {% if project.github_link %}
+                                <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-outline-light">
+                                    <i class="bi bi-github"></i> {% trans 'GitHub' %}
+                                </a>
+                                {% endif %}
+                                {% if project.demo_link %}
+                                <a href="{{ project.demo_link }}" target="_blank" class="btn btn-sm btn-outline-light">
+                                    <i class="bi bi-box-arrow-up-right"></i> {% trans 'Demo' %}
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.get_title }}</h5>
+                        <p class="card-text text-muted">{{ project.get_description|truncatewords:15 }}</p>
+                        <div class="mb-3">
+                            {% for tech in project.get_technologies_list|slice:":3" %}
+                            <span class="badge bg-purple me-1">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <a href="{% url 'project_detail' project.slug %}" class="btn btn-sm btn-outline-primary">
+                            {% trans 'View Details' %} <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">{% trans 'No projects available yet.' %}</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if featured_projects|length > 3 %}
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'projects' %}" class="btn btn-outline-primary">
+                {% trans 'View All Projects' %} <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Latest Blog Posts -->
+<section class="section bg-dark-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">{% trans 'Latest Blog Posts' %}</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{% trans 'Read my latest articles and tutorials' %}</p>
+        
+        <div class="row g-4">
+            {% for post in latest_posts|slice:":3" %}
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'200' }}">
+                <div class="card h-100">
+                    {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.get_title }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-gradient-primary d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="bi bi-file-text" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        {% if post.category %}
+                        <span class="badge bg-purple mb-2">{{ post.category.get_name }}</span>
+                        {% endif %}
+                        <h5 class="card-title">{{ post.get_title }}</h5>
+                        <p class="card-text text-muted">{{ post.get_content|truncatewords:20 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>{{ post.created_at|date:"M d, Y" }}
+                            </small>
+                            <small class="text-muted">
+                                <i class="bi bi-eye me-1"></i>{{ post.views }} {% trans 'views' %}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="{% url 'blog_detail' post.slug %}" class="btn btn-sm btn-outline-primary w-100">
+                            {% trans 'Read More' %} <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">{% trans 'No blog posts available yet.' %}</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if latest_posts|length > 3 %}
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'blog_list' %}" class="btn btn-outline-primary">
+                {% trans 'View All Posts' %} <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.bg-dark-section {
+    background: rgba(17, 34, 64, 0.5);
+    border-radius: 2rem;
+    margin: 2rem 0;
+    padding: 3rem 0;
+}
+
+.gradient-text {
+    color: var(--primary);
+}
+
+.bg-gradient-primary {
+    background: var(--primary);
+}
+
+.bg-purple {
+    background: #64FFDA !important;
+    color: #0A192F !important;
+}
+
+.badge.bg-purple,
+span.badge.bg-purple {
+    background: #64FFDA !important;
+    color: #0A192F !important;
+}
+
+.badge.bg-purple *,
+span.badge.bg-purple *,
+.badge.bg-purple i {
+    color: #0A192F !important;
+}
+</style>
+{% endblock %}

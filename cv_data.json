@@ -1,0 +1,156 @@
+{
+  "skills": [
+    {"name": "Python", "category": "backend", "level": 90, "icon": "fa fa-python", "order": 1},
+    {"name": "Django", "category": "backend", "level": 90, "icon": "fa fa-leaf", "order": 2},
+    {"name": "Flask", "category": "backend", "level": 70, "icon": "fa fa-flask", "order": 3},
+    {"name": "MySQL", "category": "database", "level": 90, "icon": "fa fa-database", "order": 4},
+    {"name": "PostgreSQL", "category": "database", "level": 70, "icon": "fa fa-database", "order": 5},
+    {"name": "Redis", "category": "database", "level": 40, "icon": "fa fa-database", "order": 6},
+    {"name": "HTML & CSS", "category": "frontend", "level": 40, "icon": "fa fa-html5", "order": 7},
+    {"name": "Docker", "category": "tools", "level": 40, "icon": "fa fa-docker", "order": 8},
+    {"name": "GIT", "category": "tools", "level": 60, "icon": "fa fa-git", "order": 9},
+    {"name": "Jira", "category": "tools", "level": 60, "icon": "fa fa-jira", "order": 10},
+    {"name": "Linux", "category": "tools", "level": 40, "icon": "fa fa-linux", "order": 11},
+    {"name": "Selenium", "category": "tools", "level": 40, "icon": "fa fa-check", "order": 12},
+    {"name": "Celery", "category": "backend", "level": 70, "icon": "fa fa-leaf", "order": 13},
+    {"name": "Socket", "category": "backend", "level": 70, "icon": "fa fa-signal", "order": 14},
+    {"name": "Web3", "category": "other", "level": 70, "icon": "fa fa-cube", "order": 15},
+    {"name": "Microservices", "category": "backend", "level": 80, "icon": "fa fa-cubes", "order": 16},
+    {"name": "Agile Scrum", "category": "other", "level": 70, "icon": "fa fa-users", "order": 17}
+  ],
+  "experiences": [
+    {
+      "title_en": "Backend Developer",
+      "title_fa": "برنامه نویس بک‌اند",
+      "company": "Hafez Insurance Co.",
+      "start_date": "2025-04-01",
+      "end_date": null,
+      "description_en": "Developed and integrated specialized insurance web services with Central Insurance, Civil Registration, and Taban systems. Implemented asynchronous Django views and applied Clean Architecture for maintainable and scalable backend systems.",
+      "description_fa": "توسعه وب‌سرویس‌های بیمه‌ای و یکپارچه‌سازی با بیمه مرکزی، ثبت احوال و تابان. استفاده از Clean Architecture و ویوهای غیرهمزمان برای ارتقاء پایداری و مقیاس‌پذیری.",
+      "current": true,
+      "order": 1
+    },
+    {
+      "title_en": "Backend Developer",
+      "title_fa": "برنامه‌نویس بک‌اند",
+      "company": "Madyar Mehr Mana",
+      "start_date": "2023-12-01",
+      "end_date": "2024-12-01",
+      "description_en": "Developed e-commerce, marketplace, and online education systems. Built order, payment, registration, and user management modules.",
+      "description_fa": "پیاده‌سازی پروژه‌های فروشگاهی، مارکت‌پلیس و آموزشگاه زبان؛ طراحی ماژول‌های سفارش، پرداخت و مدیریت کاربران.",
+      "current": false,
+      "order": 2
+    },
+    {
+      "title_en": "Backend Developer (Django)",
+      "title_fa": "برنامه‌نویس بک‌اند (Django)",
+      "company": "JahanBetab Iris",
+      "start_date": "2022-06-01",
+      "end_date": "2023-12-01",
+      "description_en": "Blockchain (Binance, Ripple, Ethereum) smart contract operations, WebSocket real-time handling, Celery background tasks, and Web3 API development for Metaverse.",
+      "description_fa": "کار با شبکه‌های بلاک‌چین بایننس، ریپل، اتریوم؛ پیاده‌سازی قراردادهای هوشمند، Celery، Websocket و API برای Web3 و Metaverse.",
+      "current": false,
+      "order": 3
+    },
+    {
+      "title_en": "Python Backend Developer (Flask)",
+      "title_fa": "برنامه نویس پایتون (بک‌اند Flask)",
+      "company": "Pars Data",
+      "start_date": "2021-11-01",
+      "end_date": "2022-05-01",
+      "description_en": "Developed digital wallet backend with Flask microservices, gRPC communication, and stored procedures for efficiency.",
+      "description_fa": "توسعه کیف پول دیجیتال با فریم‌ورک Flask با معماری میکروسرویس و ارتباط gRPC و بهینه‌سازی دیتابیس با Stored Procedures.",
+      "current": false,
+      "order": 4
+    }
+  ],
+  "educations": [
+    {
+      "degree_en": "Bachelor of Computer Engineering",
+      "degree_fa": "کارشناسی مهندسی کامپیوتر",
+      "university": "Alra Higher Education Center",
+      "start_date": "2015-09-01",
+      "end_date": "2019-06-01",
+      "description_en": "Studies in computer engineering, software, and network fundamentals.",
+      "description_fa": "تحصیل در رشته مهندسی کامپیوتر با تمرکز بر مفاهیم نرم‌افزار و شبکه.",
+      "order": 1
+    }
+  ],
+  "projects": [
+    {
+      "title_en": "Reihanly Shop",
+      "title_fa": "ریحان‌لی شاپ",
+      "description_en": "E-commerce platform with cart and online payment system.",
+      "description_fa": "فروشگاه اینترنتی با سیستم سفارش و پرداخت آنلاین.",
+      "github_link": "",
+      "demo_link": "https://reihanly.shop/",
+      "technologies": "Django, REST, PostgreSQL",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "title_en": "Mehrashop",
+      "title_fa": "مهراشاپ",
+      "description_en": "Marketplace and online shop platform.",
+      "description_fa": "مارکت‌پلیس و فروشگاه اینترنتی.",
+      "github_link": "",
+      "demo_link": "https://mehrashop.com/",
+      "technologies": "Django, DRF, PostgreSQL",
+      "featured": false,
+      "order": 2
+    },
+    {
+      "title_en": "KhanehTaar",
+      "title_fa": "خانه‌تار",
+      "description_en": "Online store for musical instruments.",
+      "description_fa": "سایت فروش سازهای موسیقی.",
+      "github_link": "",
+      "demo_link": "https://khanehtaar.com/",
+      "technologies": "Django, HTML, CSS, MySQL",
+      "featured": false,
+      "order": 3
+    },
+    {
+      "title_en": "RadmehrDigi",
+      "title_fa": "راد مهر دیجی",
+      "description_en": "E-commerce site for digital products.",
+      "description_fa": "فروشگاه محصولات دیجیتال.",
+      "github_link": "",
+      "demo_link": "https://radmehrdigi.com/",
+      "technologies": "Django, DRF",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "title_en": "Loan System",
+      "title_fa": "سامانه وام دیجیتال",
+      "description_en": "System for managing online loans.",
+      "description_fa": "سیستم مدیریت وام آنلاین.",
+      "github_link": "",
+      "demo_link": "https://loan.radmehrdigi.co/",
+      "technologies": "Django, Celery, Redis",
+      "featured": false,
+      "order": 5
+    },
+    {
+      "title_en": "ZarePy",
+      "title_fa": "زارع‌پای",
+      "description_en": "Personal website and portfolio.",
+      "description_fa": "وب‌سایت شخصی و نمونه‌کار.",
+      "github_link": "https://github.com/cloner7",
+      "demo_link": "http://zarepy.ir/",
+      "technologies": "Django, HTML, CSS",
+      "featured": false,
+      "order": 6
+    }
+  ],
+  "contact": {
+    "name": "Mohammad Reza Zare",
+    "email": "mrzjkb1375@gmail.com",
+    "subject": "Portfolio Contact",
+    "message": "Backend Developer specialized in Python/Django with over 3.5 years of experience.",
+    "created_at": null,
+    "read": false
+  }
+}
+

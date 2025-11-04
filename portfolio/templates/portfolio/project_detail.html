@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ project.get_title }}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-8" data-aos="fade-up">
+                {% if project.image %}
+                <img src="{{ project.image.url }}" class="img-fluid rounded-3 mb-4 shadow-lg" alt="{{ project.get_title }}">
+                {% endif %}
+                
+                <h1 class="display-5 fw-bold mb-4">{{ project.get_title }}</h1>
+                <div class="mb-4">
+                    {% for tech in project.get_technologies_list %}
+                    <span class="badge bg-purple me-2 mb-2">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="content-text mb-5">
+                    {{ project.get_description|linebreaks }}
+                </div>
+                
+                <div class="d-flex gap-3 mb-5">
+                    {% if project.github_link %}
+                    <a href="{{ project.github_link }}" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-github me-2"></i>{% trans 'View on GitHub' %}
+                    </a>
+                    {% endif %}
+                    {% if project.demo_link %}
+                    <a href="{{ project.demo_link }}" target="_blank" class="btn btn-outline-primary">
+                        <i class="bi bi-box-arrow-up-right me-2"></i>{% trans 'Live Demo' %}
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="col-lg-4" data-aos="fade-left" data-aos-delay="200">
+                <div class="card sticky-top" style="top: 100px;">
+                    <div class="card-header bg-transparent border-bottom">
+                        <h5 class="mb-0">{% trans 'Project Info' %}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <strong>{% trans 'Created' %}:</strong>
+                            <p class="text-muted mb-0">{{ project.created_at|date:"F Y" }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>{% trans 'Technologies' %}:</strong>
+                            <p class="text-muted mb-0">{{ project.technologies }}</p>
+                        </div>
+                        {% if project.featured %}
+                        <div>
+                            <span class="badge bg-purple">
+                                <i class="bi bi-star-fill me-1"></i>{% trans 'Featured Project' %}
+                            </span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                {% if related_projects %}
+                <div class="card mt-4">
+                    <div class="card-header bg-transparent border-bottom">
+                        <h5 class="mb-0">{% trans 'Related Projects' %}</h5>
+                    </div>
+                    <div class="card-body">
+                        {% for related in related_projects %}
+                        <a href="{% url 'project_detail' related.slug %}" class="d-block mb-3 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                {% if related.image %}
+                                <img src="{{ related.image.url }}" alt="{{ related.get_title }}" 
+                                     class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                {% endif %}
+                                <div>
+                                    <strong class="d-block">{{ related.get_title }}</strong>
+                                    <small class="text-muted">{{ related.get_description|truncatewords:8 }}</small>
+                                </div>
+                            </div>
+                        </a>
+                        {% if not forloop.last %}<hr>{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.bg-purple {
+    background: #64FFDA !important;
+    color: #0A192F !important;
+}
+
+.badge.bg-purple,
+span.badge.bg-purple {
+    background: #64FFDA !important;
+    color: #0A192F !important;
+}
+
+.badge.bg-purple *,
+span.badge.bg-purple *,
+.badge.bg-purple i {
+    color: #0A192F !important;
+}
+
+.content-text {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.sticky-top {
+    position: sticky;
+}
+</style>
+{% endblock %}

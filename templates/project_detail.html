@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Project Details' %}{% endblock %}
+{% block content %}
+<h2 class="h4 mb-3">{% trans 'Project Details' %}</h2>
+<div class="row g-4">
+  <div class="col-md-7">
+    <div class="ratio ratio-16x9 bg-light rounded shimmer"></div>
+  </div>
+  <div class="col-md-5">
+    <div class="card p-3">
+      <div class="mb-2"><span class="badge bg-secondary">Django</span> <span class="badge bg-secondary">Bootstrap</span></div>
+      <p class="mb-0">{% trans 'Project description...' %}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

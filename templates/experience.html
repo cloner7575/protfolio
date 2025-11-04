@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Experience' %}{% endblock %}
+{% block content %}
+<h2 class="h4 mb-4">{% trans 'Experience' %}</h2>
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-point"></div>
+    <div class="timeline-content card p-3">
+      <div class="fw-bold">{% trans 'Job Title' %} · {% trans 'Company' %}</div>
+      <small class="text-muted">2022 — 2024</small>
+      <p class="mb-0 mt-2">{% trans 'Description in two languages.' %}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

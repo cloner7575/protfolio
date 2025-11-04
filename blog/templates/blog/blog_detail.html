@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load portfolio_tags %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block title %}{{ post.get_title }}{% endblock %}
 
@@ -40,22 +42,34 @@
                         <div class="d-flex flex-wrap align-items-center gap-4">
                             {% if post.author %}
                             <div class="meta-item">
-                                <i class="bi bi-person-circle me-2"></i>
+                                <i class="bi bi-person-circle"></i>
                                 <span>{{ post.author.get_full_name|default:post.author.username }}</span>
                             </div>
                             {% endif %}
                             <div class="meta-item">
-                                <i class="bi bi-calendar3 me-2"></i>
-                                <span>{{ post.created_at|date:"F d, Y" }}</span>
+                                <i class="bi bi-calendar3"></i>
+                                <span>
+                                    {% if LANGUAGE_CODE == 'fa' %}
+                                        {{ post.created_at|jalali_date:"%d %B %Y" }}
+                                    {% else %}
+                                        {{ post.created_at|date:"F d, Y" }}
+                                    {% endif %}
+                                </span>
                             </div>
                             <div class="meta-item">
-                                <i class="bi bi-eye me-2"></i>
+                                <i class="bi bi-eye"></i>
                                 <span>{{ post.views }} {% trans 'views' %}</span>
                             </div>
                             {% if post.updated_at %}
                             <div class="meta-item">
-                                <i class="bi bi-pencil me-2"></i>
-                                <span>{% trans 'Updated' %}: {{ post.updated_at|date:"M d, Y" }}</span>
+                                <i class="bi bi-pencil"></i>
+                                <span>{% trans 'Updated' %}: 
+                                    {% if LANGUAGE_CODE == 'fa' %}
+                                        {{ post.updated_at|jalali_date:"%d %B %Y" }}
+                                    {% else %}
+                                        {{ post.updated_at|date:"M d, Y" }}
+                                    {% endif %}
+                                </span>
                             </div>
                             {% endif %}
                         </div>

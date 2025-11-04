@@ -16,24 +16,34 @@
             </div>
             <div class="col-md-8" data-aos="fade-left">
                 <h2 class="section-title text-start mb-4">{% trans 'About Me' %}</h2>
-                <p class="lead text-secondary mb-4">
+                <p class="about-lead mb-4">
                     {% trans 'I am a passionate Full-Stack Developer with expertise in building modern web applications. I love solving complex problems and creating beautiful, functional user experiences.' %}
                 </p>
-                <p class="text-muted mb-4">
+                <p class="about-text mb-4">
                     {% trans 'With years of experience in both frontend and backend development, I specialize in creating scalable, maintainable, and performant applications.' %}
                 </p>
                 
-                <div class="row g-3 mb-4">
-                    <div class="col-6">
-                        <div class="d-flex align-items-center">
-                            <i class="bi bi-calendar-check me-2 text-purple"></i>
-                            <span>{% trans '5+' %} {% trans 'Years Experience' %}</span>
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="about-stat-card">
+                            <div class="about-stat-icon">
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
+                            <div class="about-stat-content">
+                                <div class="about-stat-number">{% trans '5+' %}</div>
+                                <div class="about-stat-label">{% trans 'Years Experience' %}</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="d-flex align-items-center">
-                            <i class="bi bi-folder-check me-2 text-purple"></i>
-                            <span>{% trans '50+' %} {% trans 'Projects Completed' %}</span>
+                    <div class="col-md-6">
+                        <div class="about-stat-card">
+                            <div class="about-stat-icon">
+                                <i class="bi bi-folder-check"></i>
+                            </div>
+                            <div class="about-stat-content">
+                                <div class="about-stat-number">{% trans '50+' %}</div>
+                                <div class="about-stat-label">{% trans 'Projects Completed' %}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -69,8 +79,115 @@
 
 {% block extra_css %}
 <style>
-.text-purple {
-    color: var(--purple-500);
+.about-lead {
+    color: var(--text-primary) !important;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.about-text {
+    color: var(--text-primary) !important;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+/* About Stat Cards */
+.about-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: rgba(17, 34, 64, 0.6);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 1rem;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.about-stat-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+}
+
+.about-stat-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(100, 255, 218, 0.15);
+    border-radius: 0.75rem;
+    flex-shrink: 0;
+}
+
+.about-stat-icon i {
+    color: var(--primary);
+    font-size: 1.75rem;
+}
+
+.about-stat-content {
+    flex: 1;
+}
+
+.about-stat-number {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+}
+
+.about-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Profile Pic Enhancement */
+.profile-pic {
+    position: relative;
+    overflow: visible;
+}
+
+.profile-pic i {
+    transition: var(--transition);
+}
+
+.profile-pic:hover i {
+    transform: scale(1.1);
+}
+
+/* Social Links Enhancement */
+.social-links {
+    margin-top: 2rem;
+}
+
+.social-link {
+    margin-right: 0.75rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-stat-card {
+        padding: 1.25rem;
+    }
+    
+    .about-stat-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .about-stat-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .about-stat-number {
+        font-size: 1.75rem;
+    }
 }
 </style>
 {% endblock %}

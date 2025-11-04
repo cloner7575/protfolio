@@ -128,3 +128,70 @@ def category_icon(skill_category):
 def get_current_lang():
     """Get current language code"""
     return get_language()
+
+
+@register.filter
+def jalali_date(date_obj, format_string='%Y/%m/%d'):
+    """
+    Convert a date/datetime object to Jalali (Persian) date format.
+    Usage: {{ experience.start_date|jalali_date:"%Y/%m" }}
+    
+    Available format codes:
+    %Y: 4-digit year (e.g., 1403)
+    %y: 2-digit year (e.g., 03)
+    %m: Month number (01-12)
+    %B: Month name (فروردین, اردیبهشت, ...)
+    %b: Short month name (فرر, ارد, ...)
+    %d: Day of month (01-31)
+    %A: Weekday name (شنبه, یکشنبه, ...)
+    %a: Short weekday name (ش, ی, ...)
+    """
+    if not date_obj:
+        return ''
+    
+    try:
+        import jdatetime
+        from django.utils.translation import get_language
+        
+        # Convert date to jdatetime
+        if hasattr(date_obj, 'year'):  # datetime or date object
+            jalali_dt = jdatetime.datetime.fromgregorian(
+                year=date_obj.year,
+                month=date_obj.month,
+                day=date_obj.day
+            )
+        else:
+            return str(date_obj)
+        
+        # Format the date
+        formatted = jalali_dt.strftime(format_string)
+        
+        # If language is Persian, translate month names
+        language = get_language()
+        if language == 'fa':
+            # Persian month names
+            month_names = {
+                'Farvardin': 'فروردین',
+                'Ordibehesht': 'اردیبهشت',
+                'Khordad': 'خرداد',
+                'Tir': 'تیر',
+                'Mordad': 'مرداد',
+                'Shahrivar': 'شهریور',
+                'Mehr': 'مهر',
+                'Aban': 'آبان',
+                'Azar': 'آذر',
+                'Dey': 'دی',
+                'Bahman': 'بهمن',
+                'Esfand': 'اسفند',
+            }
+            
+            # Replace English month names with Persian
+            for en_name, fa_name in month_names.items():
+                formatted = formatted.replace(en_name, fa_name)
+        
+        return formatted
+    except ImportError:
+        # Fallback to regular date formatting if jdatetime is not available
+        return date_obj.strftime(format_string) if hasattr(date_obj, 'strftime') else str(date_obj)
+    except Exception:
+        return str(date_obj)

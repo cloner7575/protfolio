@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load portfolio_tags %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block title %}{% trans 'Experience' %}{% endblock %}
 
@@ -23,13 +25,22 @@
                         <span class="badge bg-success">{% trans 'Current' %}</span>
                         {% endif %}
                     </div>
-                    <p class="text-muted small mb-3">
+                    <p class="experience-date small mb-3">
                         <i class="bi bi-calendar me-1"></i>
-                        {{ experience.start_date|date:"M Y" }} - 
-                        {% if experience.end_date %}
-                            {{ experience.end_date|date:"M Y" }}
+                        {% if LANGUAGE_CODE == 'fa' %}
+                            {{ experience.start_date|jalali_date:"%B %Y" }} - 
+                            {% if experience.end_date %}
+                                {{ experience.end_date|jalali_date:"%B %Y" }}
+                            {% else %}
+                                {% trans 'Present' %}
+                            {% endif %}
                         {% else %}
-                            {% trans 'Present' %}
+                            {{ experience.start_date|date:"F Y" }} - 
+                            {% if experience.end_date %}
+                                {{ experience.end_date|date:"F Y" }}
+                            {% else %}
+                                {% trans 'Present' %}
+                            {% endif %}
                         {% endif %}
                     </p>
                     <p class="mb-0">{{ experience.get_description }}</p>

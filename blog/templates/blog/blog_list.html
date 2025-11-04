@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load portfolio_tags %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block title %}{% trans 'Blog' %}{% endblock %}
 
@@ -57,16 +59,21 @@
                         <h5 class="card-title">{{ post.get_title }}</h5>
                         <p class="card-text text-muted">{{ post.get_content|truncatewords:20 }}</p>
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <small class="text-muted">
-                                <i class="bi bi-calendar me-1"></i>{{ post.created_at|date:"M d, Y" }}
+                            <small class="blog-date">
+                                <i class="bi bi-calendar"></i>
+                                {% if LANGUAGE_CODE == 'fa' %}
+                                    {{ post.created_at|jalali_date:"%d %B %Y" }}
+                                {% else %}
+                                    {{ post.created_at|date:"M d, Y" }}
+                                {% endif %}
                             </small>
-                            <small class="text-muted">
-                                <i class="bi bi-eye me-1"></i>{{ post.views }} {% trans 'views' %}
+                            <small class="text-muted blog-views">
+                                <i class="bi bi-eye"></i>{{ post.views }} {% trans 'views' %}
                             </small>
                         </div>
                         {% if post.author %}
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-person-circle me-2 text-purple"></i>
+                        <div class="d-flex align-items-center mb-3 blog-author">
+                            <i class="bi bi-person-circle"></i>
                             <small class="text-muted">{{ post.author.get_full_name|default:post.author.username }}</small>
                         </div>
                         {% endif %}

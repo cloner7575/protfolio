@@ -126,6 +126,16 @@ body {
   transform: translateY(-2px);
 }
 
+.nav-link i {
+  margin-right: 0.5rem !important;
+  margin-left: 0 !important;
+}
+
+[dir="rtl"] .nav-link i {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
 /* Language Switcher */
 .language-switcher .btn {
   min-width: 50px;
@@ -293,6 +303,42 @@ body {
 
 .card .text-muted, .card .text-secondary {
   color: var(--text-secondary) !important;
+}
+
+.blog-date {
+  color: var(--text-primary) !important;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.blog-date i {
+  color: var(--primary);
+  margin-right: 0.5rem !important;
+  margin-left: 0 !important;
+}
+
+.blog-views i {
+  margin-right: 0.5rem !important;
+  margin-left: 0 !important;
+}
+
+.blog-author i {
+  margin-right: 0.5rem !important;
+  margin-left: 0 !important;
+  color: var(--primary);
+}
+
+.meta-item i {
+  margin-right: 0.5rem !important;
+  margin-left: 0 !important;
+}
+
+[dir="rtl"] .blog-date i,
+[dir="rtl"] .blog-views i,
+[dir="rtl"] .blog-author i,
+[dir="rtl"] .meta-item i {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
 }
 
 .card::before {
@@ -516,6 +562,19 @@ body {
 
 .timeline-content p, .timeline-content span, .timeline-content div {
   color: var(--text-primary);
+}
+
+.timeline-content .experience-date,
+.timeline-content .education-date {
+  color: var(--text-primary) !important;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.timeline-content .experience-date i,
+.timeline-content .education-date i {
+  color: var(--primary);
+  margin-left: 0.25rem;
 }
 
 .timeline-content:hover {

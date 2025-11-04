@@ -37,14 +37,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}"><i class="bi bi-house me-1"></i>{% trans 'Home' %}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}"><i class="bi bi-person me-1"></i>{% trans 'About' %}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'projects' %}"><i class="bi bi-folder me-1"></i>{% trans 'Projects' %}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'skills' %}"><i class="bi bi-tools me-1"></i>{% trans 'Skills' %}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'experience' %}"><i class="bi bi-briefcase me-1"></i>{% trans 'Experience' %}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'education' %}"><i class="bi bi-mortarboard me-1"></i>{% trans 'Education' %}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'blog_list' %}"><i class="bi bi-journal-text me-1"></i>{% trans 'Blog' %}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="bi bi-envelope me-1"></i>{% trans 'Contact' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}"><i class="bi bi-house"></i>{% trans 'Home' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}"><i class="bi bi-person"></i>{% trans 'About' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'projects' %}"><i class="bi bi-folder"></i>{% trans 'Projects' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'skills' %}"><i class="bi bi-tools"></i>{% trans 'Skills' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'experience' %}"><i class="bi bi-briefcase"></i>{% trans 'Experience' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'education' %}"><i class="bi bi-mortarboard"></i>{% trans 'Education' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog_list' %}"><i class="bi bi-journal-text"></i>{% trans 'Blog' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="bi bi-envelope"></i>{% trans 'Contact' %}</a></li>
                 </ul>
                 <div class="d-flex gap-2 ms-3 language-switcher">
                     {% for lang_code, lang_name in LANGUAGES %}

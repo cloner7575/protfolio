@@ -16,11 +16,15 @@ def home(request):
     latest_projects = Project.objects.all()[:6]
     latest_posts = BlogPost.objects.filter(published=True)[:3]
     
+    # Name based on language
+    name = "Mohammad Reza Zare" if language == 'en' else "محمد رضا زارع"
+    
     context = {
         'featured_projects': featured_projects,
         'latest_projects': latest_projects,
         'latest_posts': latest_posts,
         'language': language,
+        'name': name,
     }
     return render(request, 'portfolio/home.html', context)
 

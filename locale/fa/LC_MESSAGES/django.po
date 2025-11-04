@@ -102,8 +102,8 @@ msgstr "فیلتر بر اساس تکنولوژی..."
 msgid "Frontend"
 msgstr "فرانت‌اند"
 
-msgid "Full-Stack Developer & Creative Problem Solver"
-msgstr "توسعه‌دهنده فول‌استک و حل‌کننده خلاقانه مسائل"
+msgid "Web Developer & Creative Problem Solver"
+msgstr "توسعه‌دهنده وب و حل‌کننده خلاقانه مسائل"
 
 msgid "Get In Touch"
 msgstr "تماس بگیرید"
@@ -140,6 +140,9 @@ msgstr "دمو زنده"
 
 msgid "Location"
 msgstr "موقعیت"
+
+msgid "Mohammad zare"
+msgstr "محمد رضا زارع"
 
 msgid "Message"
 msgstr "پیام"

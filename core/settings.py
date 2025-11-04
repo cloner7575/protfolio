@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-fwd@bsp+it%g&yohxkad*_urr+xp+4ar(&!m!_lt^enh1roi=p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['zarepy.ir/', '*']
+CSRF_TRUSTED_ORIGINS = ['http://zarepy.ir', 'https://zarepy.ir',
+                        ]
+CORS_ALLOWED_ORIGINS = ['http://zarepy.ir', 'https://zarepy.ir',]
+CSRF_USE_SESSIONS = False
 
 
 # Application definition
@@ -141,9 +145,10 @@ STATICFILES_DIRS = [
 # WhiteNoise configuration for serving static files in production
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Media files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
+MEDIA_URL = config('MEDIA_URL', default='/media/')
+MEDIA_ROOT = config('MEDIA_ROOT', default=os.path.join(BASE_DIR, "public", "media"))
+
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

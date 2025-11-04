@@ -333,8 +333,6 @@ msgstr "سال تجربه"
 msgid "views"
 msgstr "بازدید"
 
-msgid "Parand"
-msgstr "پرند"
+msgid "Parand, Iran"
+msgstr "ایران,پرند"
 
-msgid "Iran"
-msgstr "ایران"

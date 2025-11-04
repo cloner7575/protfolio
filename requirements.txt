@@ -4,3 +4,5 @@ polib==1.2.0
 pdfplumber==0.11.0
 whitenoise==6.7.0
 python-decouple==3.8
+mysqlclient==2.2.7
+sqlparse==0.5.2

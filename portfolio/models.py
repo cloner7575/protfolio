@@ -157,3 +157,70 @@ class Contact(models.Model):
     
     def __str__(self):
         return f"{self.name} - {self.subject}"
+
+
+class Profile(models.Model):
+    """Profile information for the portfolio owner"""
+    name_en = models.CharField(max_length=200, verbose_name=_('Name (English)'))
+    name_fa = models.CharField(max_length=200, blank=True, verbose_name=_('Name (Persian)'))
+    profile_image = models.ImageField(upload_to='profile/', blank=True, null=True, verbose_name=_('Profile Image'))
+    title_en = models.CharField(max_length=200, default='Web Developer & Creative Problem Solver', verbose_name=_('Title (English)'))
+    title_fa = models.CharField(max_length=200, blank=True, verbose_name=_('Title (Persian)'))
+    bio_short_en = models.TextField(blank=True, verbose_name=_('Short Bio (English)'), 
+                                     help_text=_('Brief introduction for hero section'))
+    bio_short_fa = models.TextField(blank=True, verbose_name=_('Short Bio (Persian)'))
+    bio_long_en = models.TextField(blank=True, verbose_name=_('Long Bio (English)'), 
+                                   help_text=_('Detailed description for about page'))
+    bio_long_fa = models.TextField(blank=True, verbose_name=_('Long Bio (Persian)'))
+    email = models.EmailField(blank=True, verbose_name=_('Email'))
+    phone = models.CharField(max_length=20, blank=True, verbose_name=_('Phone'))
+    location = models.CharField(max_length=200, blank=True, verbose_name=_('Location'))
+    
+    # Social Links
+    github_url = models.URLField(blank=True, verbose_name=_('GitHub URL'))
+    linkedin_url = models.URLField(blank=True, verbose_name=_('LinkedIn URL'))
+    twitter_url = models.URLField(blank=True, verbose_name=_('Twitter/X URL'))
+    website_url = models.URLField(blank=True, verbose_name=_('Website URL'))
+    
+    # Statistics
+    years_experience = models.IntegerField(default=0, verbose_name=_('Years of Experience'))
+    projects_completed = models.IntegerField(default=0, verbose_name=_('Projects Completed'))
+    
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
+    
+    class Meta:
+        verbose_name = _('Profile')
+        verbose_name_plural = _('Profile')
+    
+    def __str__(self):
+        return self.name_en
+    
+    def get_name(self, language=None):
+        from django.utils.translation import get_language
+        if language is None:
+            language = get_language()
+        return self.name_fa if language == 'fa' and self.name_fa else self.name_en
+    
+    def get_title(self, language=None):
+        from django.utils.translation import get_language
+        if language is None:
+            language = get_language()
+        return self.title_fa if language == 'fa' and self.title_fa else self.title_en
+    
+    def get_bio_short(self, language=None):
+        from django.utils.translation import get_language
+        if language is None:
+            language = get_language()
+        return self.bio_short_fa if language == 'fa' and self.bio_short_fa else self.bio_short_en
+    
+    def get_bio_long(self, language=None):
+        from django.utils.translation import get_language
+        if language is None:
+            language = get_language()
+        return self.bio_long_fa if language == 'fa' and self.bio_long_fa else self.bio_long_en
+    
+    @classmethod
+    def get_profile(cls):
+        """Get the profile instance (singleton pattern)"""
+        profile, created = cls.objects.get_or_create(pk=1)
+        return profile

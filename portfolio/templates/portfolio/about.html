@@ -9,19 +9,27 @@
         <div class="row align-items-center g-5">
             <div class="col-md-4 text-center" data-aos="fade-right">
                 <div class="profile-pic">
+                    {% if profile.profile_image %}
+                    <img src="{{ profile.profile_image.url }}" alt="{{ profile.get_name }}" class="profile-image">
+                    {% else %}
                     <div class="d-flex align-items-center justify-content-center h-100">
                         <i class="bi bi-person-fill" style="font-size: 5rem; color: rgba(255,255,255,0.8);"></i>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-8" data-aos="fade-left">
                 <h2 class="section-title text-start mb-4">{% trans 'About Me' %}</h2>
+                {% if profile.bio_short_en or profile.bio_short_fa %}
                 <p class="about-lead mb-4">
-                    {% trans 'I am a passionate Full-Stack Developer with expertise in building modern web applications. I love solving complex problems and creating beautiful, functional user experiences.' %}
+                    {{ profile.get_bio_short }}
                 </p>
+                {% endif %}
+                {% if profile.bio_long_en or profile.bio_long_fa %}
                 <p class="about-text mb-4">
-                    {% trans 'With years of experience in both frontend and backend development, I specialize in creating scalable, maintainable, and performant applications.' %}
+                    {{ profile.get_bio_long }}
                 </p>
+                {% endif %}
                 
                 <div class="row g-4 mb-4">
                     <div class="col-md-6">
@@ -30,7 +38,7 @@
                                 <i class="bi bi-calendar-check"></i>
                             </div>
                             <div class="about-stat-content">
-                                <div class="about-stat-number">{% trans '5+' %}</div>
+                                <div class="about-stat-number">{{ profile.years_experience }}+</div>
                                 <div class="about-stat-label">{% trans 'Years Experience' %}</div>
                             </div>
                         </div>
@@ -41,7 +49,7 @@
                                 <i class="bi bi-folder-check"></i>
                             </div>
                             <div class="about-stat-content">
-                                <div class="about-stat-number">{% trans '50+' %}</div>
+                                <div class="about-stat-number">{{ profile.projects_completed }}+</div>
                                 <div class="about-stat-label">{% trans 'Projects Completed' %}</div>
                             </div>
                         </div>
@@ -49,18 +57,31 @@
                 </div>
                 
                 <div class="social-links justify-content-start">
-                    <a href="#" class="social-link" aria-label="{% trans 'GitHub' %}">
+                    {% if profile.github_url %}
+                    <a href="{{ profile.github_url }}" target="_blank" class="social-link" aria-label="{% trans 'GitHub' %}">
                         <i class="bi bi-github"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="{% trans 'LinkedIn' %}">
+                    {% endif %}
+                    {% if profile.linkedin_url %}
+                    <a href="{{ profile.linkedin_url }}" target="_blank" class="social-link" aria-label="{% trans 'LinkedIn' %}">
                         <i class="bi bi-linkedin"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="{% trans 'Twitter' %}">
+                    {% endif %}
+                    {% if profile.twitter_url %}
+                    <a href="{{ profile.twitter_url }}" target="_blank" class="social-link" aria-label="{% trans 'Twitter' %}">
                         <i class="bi bi-twitter-x"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="{% trans 'Email' %}">
+                    {% endif %}
+                    {% if profile.email %}
+                    <a href="mailto:{{ profile.email }}" class="social-link" aria-label="{% trans 'Email' %}">
                         <i class="bi bi-envelope"></i>
                     </a>
+                    {% endif %}
+                    {% if profile.website_url %}
+                    <a href="{{ profile.website_url }}" target="_blank" class="social-link" aria-label="{% trans 'Website' %}">
+                        <i class="bi bi-globe"></i>
+                    </a>
+                    {% endif %}
                 </div>
                 
                 <div class="mt-4">
@@ -150,7 +171,23 @@
 /* Profile Pic Enhancement */
 .profile-pic {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background: rgba(100, 255, 218, 0.1);
+    border: 3px solid rgba(100, 255, 218, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .profile-pic i {
@@ -159,6 +196,11 @@
 
 .profile-pic:hover i {
     transform: scale(1.1);
+}
+
+.profile-pic:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
 }
 
 /* Social Links Enhancement */

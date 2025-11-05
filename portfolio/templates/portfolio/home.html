@@ -10,8 +10,8 @@
 <section class="hero-section">
     <div class="container">
         <div class="hero-content" data-aos="fade-up">
-            <h1 class="hero-title">{% trans 'Hi, I am' %} <span class="gradient-text">{{ name }}</span></h1>
-            <p class="hero-subtitle">{% trans 'Web Developer & Creative Problem Solver' %}</p>
+            <h1 class="hero-title">{% trans 'Hi, I am' %} <span class="gradient-text">{{ profile.get_name }}</span></h1>
+            <p class="hero-subtitle">{{ profile.get_title }}</p>
             <div class="hero-buttons">
                 <a href="{% url 'projects' %}" class="btn btn-primary btn-lg">
                     <i class="bi bi-folder me-2"></i>{% trans 'View Projects' %}

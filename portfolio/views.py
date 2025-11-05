@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
-from .models import Skill, Experience, Education, Project, Contact
+from .models import Skill, Experience, Education, Project, Contact, Profile
 from .forms import ContactForm
 from blog.models import BlogPost
 
@@ -15,16 +15,14 @@ def home(request):
     featured_projects = Project.objects.filter(featured=True)[:3]
     latest_projects = Project.objects.all()[:6]
     latest_posts = BlogPost.objects.filter(published=True)[:3]
-    
-    # Name based on language
-    name = "Mohammad Reza Zare" if language == 'en' else "محمد رضا زارع"
+    profile = Profile.get_profile()
     
     context = {
         'featured_projects': featured_projects,
         'latest_projects': latest_projects,
         'latest_posts': latest_posts,
         'language': language,
-        'name': name,
+        'profile': profile,
     }
     return render(request, 'portfolio/home.html', context)
 
@@ -39,9 +37,12 @@ def about(request):
             skills_by_category[skill.category] = []
         skills_by_category[skill.category].append(skill)
     
+    profile = Profile.get_profile()
+    
     context = {
         'skills_by_category': skills_by_category,
         'language': language,
+        'profile': profile,
     }
     return render(request, 'portfolio/about.html', context)
 

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Skill, Experience, Education, Project, Contact
+from django.utils.translation import gettext_lazy as _
+from .models import Skill, Experience, Education, Project, Contact, Profile
 
 
 @admin.register(Skill)
@@ -46,3 +47,37 @@ class ContactAdmin(admin.ModelAdmin):
     ordering = ['-created_at']
     readonly_fields = ['created_at']
     date_hierarchy = 'created_at'
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (_('Basic Information'), {
+            'fields': ('name_en', 'name_fa', 'profile_image', 'title_en', 'title_fa')
+        }),
+        (_('Biography'), {
+            'fields': ('bio_short_en', 'bio_short_fa', 'bio_long_en', 'bio_long_fa')
+        }),
+        (_('Contact Information'), {
+            'fields': ('email', 'phone', 'location')
+        }),
+        (_('Social Links'), {
+            'fields': ('github_url', 'linkedin_url', 'twitter_url', 'website_url')
+        }),
+        (_('Statistics'), {
+            'fields': ('years_experience', 'projects_completed')
+        }),
+        (_('Metadata'), {
+            'fields': ('updated_at',),
+            'classes': ('collapse',)
+        }),
+    )
+    readonly_fields = ['updated_at']
+    
+    def has_add_permission(self, request):
+        # Only allow one profile instance
+        return not Profile.objects.exists()
+    
+    def has_delete_permission(self, request, obj=None):
+        # Prevent deletion of profile
+        return False

@@ -8,6 +8,7 @@
   --text-primary: #CCD6F6;  /* متن اصلی */
   --text-secondary: #8892B0;  /* متن ثانویه */
   --text-muted: #5A6885;  /* متن کمرنگ */
+  --bs-secondary-color: #ffffff; /* Bootstrap secondary text color override */
   
   /* Legacy support - map to new colors */
   --green-900: #0A192F;

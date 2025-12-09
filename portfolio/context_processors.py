@@ -1,4 +1,5 @@
 from django.utils.translation import get_language
+from django.conf import settings
 
 
 def language_context(request):
@@ -8,5 +9,6 @@ def language_context(request):
     """
     return {
         'CURRENT_LANGUAGE': get_language(),
+        'LANGUAGES': settings.LANGUAGES,
     }
 

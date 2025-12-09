@@ -336,3 +336,54 @@ msgstr "بازدید"
 msgid "Parand, Iran"
 msgstr "ایران,پرند"
 
+msgid "Building Digital Experiences"
+msgstr "ساخت تجربیات دیجیتال"
+
+msgid "Technologies I Work With"
+msgstr "تکنولوژی‌هایی که با آنها کار می‌کنم"
+
+msgid "A collection of technologies and tools I use to build amazing products"
+msgstr "مجموعه‌ای از تکنولوژی‌ها و ابزارهایی که برای ساخت محصولات فوق‌العاده استفاده می‌کنم"
+
+msgid "Available for work"
+msgstr "در دسترس برای کار"
+
+msgid "Learn More"
+msgstr "بیشتر بدانید"
+
+msgid "View All Skills"
+msgstr "مشاهده همه مهارت‌ها"
+
+msgid "Latest Experience"
+msgstr "آخرین تجربه کاری"
+
+msgid "Latest Education"
+msgstr "آخرین تحصیلات"
+
+msgid "View All"
+msgstr "مشاهده همه"
+
+msgid "Featured Projects"
+msgstr "پروژه‌های ویژه"
+
+msgid "Some of my recent work and side projects"
+msgstr "برخی از کارها و پروژه‌های جانبی اخیر من"
+
+msgid "Let's Work Together"
+msgstr "بیایید با هم کار کنیم"
+
+msgid "Have a project in mind? I'd love to hear about it. Let's make something amazing together!"
+msgstr "پروژه‌ای در ذهن دارید؟ خوشحال می‌شوم درباره آن بشنوم. بیایید با هم چیزی فوق‌العاده بسازیم!"
+
+msgid "View My Work"
+msgstr "مشاهده کارهای من"
+
+msgid "Latest Articles"
+msgstr "آخرین مقالات"
+
+msgid "Thoughts, tutorials, and insights about web development"
+msgstr "افکار، آموزش‌ها و بینش‌هایی درباره توسعه وب"
+
+msgid "Full Stack Developer"
+msgstr "توسعه‌دهنده فول‌استک"
+

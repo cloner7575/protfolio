@@ -16,6 +16,14 @@ def home(request):
     latest_projects = Project.objects.all()[:6]
     latest_posts = BlogPost.objects.filter(published=True)[:3]
     profile = Profile.get_profile()
+    skills = Skill.objects.all()
+    skills_by_category = {}
+    for skill in skills:
+        if skill.category not in skills_by_category:
+            skills_by_category[skill.category] = []
+        skills_by_category[skill.category].append(skill)
+    experiences = Experience.objects.all()[:3]
+    educations = Education.objects.all()[:3]
     
     context = {
         'featured_projects': featured_projects,
@@ -23,6 +31,10 @@ def home(request):
         'latest_posts': latest_posts,
         'language': language,
         'profile': profile,
+        'skills': skills,
+        'skills_by_category': skills_by_category,
+        'experiences': experiences,
+        'educations': educations,
     }
     return render(request, 'portfolio/home.html', context)
 

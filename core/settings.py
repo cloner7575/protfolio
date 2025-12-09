@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fwd@bsp+it%g&yohxkad*_urr+xp+4ar(&!m!_lt^enh1roi=p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['zarepy.ir/', '*']
 CSRF_TRUSTED_ORIGINS = ['http://zarepy.ir', 'https://zarepy.ir',
@@ -92,7 +92,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'init_command': 'SET default_storage_engine=INNODB',
+            'init_command': "SET default_storage_engine=INNODB, character_set_client=utf8mb4, collation_connection=utf8mb4_unicode_ci",
+            'charset': 'utf8mb4',
         },
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
@@ -125,12 +126,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'fa'
 
 LANGUAGES = [
     ('en', 'English'),
     ('fa', 'فارسی'),
 ]
+
+# Ensure UTF-8 encoding for all file operations
+FILE_CHARSET = 'utf-8'
+DEFAULT_CHARSET = 'utf-8'
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',

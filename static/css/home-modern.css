@@ -1009,7 +1009,7 @@
 @media (max-width: 992px) {
     .hero-section-modern {
         min-height: 80vh;
-        padding-top: 80px;
+        padding-top: 90px;
     }
     
     .hero-content-modern {
@@ -1056,12 +1056,22 @@
 @media (max-width: 768px) {
     .hero-section-modern {
         min-height: 70vh;
-        padding-top: 70px;
+        padding-top: 100px; /* Increased for mobile navbar */
         padding-bottom: 2rem;
     }
     
     .hero-content-modern {
         padding: 0 1rem;
+    }
+    
+    .section-modern {
+        padding-top: 3rem; /* Add top padding for sections */
+        padding-bottom: 3rem;
+    }
+    
+    /* First section after hero should have more top padding */
+    .about-preview-section {
+        padding-top: 4rem;
     }
     
     .section-modern .container {
@@ -1354,7 +1364,7 @@
 /* Small Mobile */
 @media (max-width: 480px) {
     .hero-section-modern {
-        padding-top: 60px;
+        padding-top: 90px; /* Increased for mobile navbar */
         min-height: 60vh;
     }
     

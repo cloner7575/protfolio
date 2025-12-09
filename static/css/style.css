@@ -802,8 +802,19 @@ body {
 
 /* Mobile */
 @media (max-width: 768px) {
+  /* Add padding to main content to account for fixed navbar */
+  main {
+    padding-top: 80px; /* Space for fixed navbar */
+  }
+  
   .navbar {
     padding: 0.5rem 0;
+    min-height: 60px; /* Ensure navbar has minimum height */
+  }
+  
+  /* Adjust hero section padding since main already has padding */
+  .hero-section-modern {
+    padding-top: 20px !important;
   }
   
   .brand-text {
@@ -943,8 +954,17 @@ body {
 
 /* Small Mobile */
 @media (max-width: 480px) {
+  main {
+    padding-top: 75px; /* Slightly less for smaller screens */
+  }
+  
   .navbar {
     padding: 0.4rem 0;
+    min-height: 55px;
+  }
+  
+  .hero-section-modern {
+    padding-top: 15px !important;
   }
   
   .brand-text {
